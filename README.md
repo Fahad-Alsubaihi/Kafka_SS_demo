@@ -36,7 +36,7 @@ Schema:
 ```
 Producer:
 ```
-kafka-avro-console-producer --bootstrap-server IP:Port  --property schema.registry.url=http://IP:Port --topic demo_topic --property value.schema.id=
+kafka-avro-console-producer --bootstrap-server IP:9092  --property schema.registry.url=http://IP:8081 --topic demo_topic --property value.schema.id=
 ```
 
 Messages:
