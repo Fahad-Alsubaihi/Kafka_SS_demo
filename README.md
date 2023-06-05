@@ -35,6 +35,22 @@ Schema:
   "type": "record"
 }
 ```
+```
+docker network ls
+```
+you will get an output like this:
+```
+NETWORK ID     NAME                    DRIVER    SCOPE
+98842623c91b   bridge                  bridge    local
+93b3993c71bc   cp-all-in-one_default   bridge    local
+1a3f2ff21715   host                    host      local
+5059222addc0   none                    null      local
+```
+copy the network name and past it in this command after (network=) like this:
+
+```
+docker run --rm -it --network=cp-all-in-one_default confluentinc/cp-kafka-connect bash
+```
 Producer:
 ```
 kafka-avro-console-producer --bootstrap-server IP:9092  --property schema.registry.url=http://IP:8081 --topic demo_topic --property value.schema.id=
