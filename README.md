@@ -53,7 +53,7 @@ docker run --rm -it --network=cp-all-in-one_default confluentinc/cp-kafka-connec
 ```
 Producer:
 ```
-kafka-avro-console-producer --bootstrap-server IP:9092  --property schema.registry.url=http://IP:8081 --topic demo_topic --property value.schema.id=
+kafka-avro-console-producer --bootstrap-server 172.18.0.3:9092  --property schema.registry.url=http://172.18.0.4:8081 --topic demo_topic --property value.schema.id=
 ```
 
 Messages:
@@ -68,7 +68,7 @@ Messages:
 ```
 Consumer:
 ```
-kafka-avro-console-consumer --bootstrap-server IP:9092 --property schema.registry.url=http://IP:8081 --topic demo_topic --from-beginning --timeout-ms 5000 --max-messages 1000
+kafka-avro-console-consumer --bootstrap-server 172.18.0.3:9092 --property schema.registry.url=http://172.18.0.4:8081 --topic demo_topic --from-beginning --timeout-ms 5000 --max-messages 1000
 ```
 ## SS Commands:
 
