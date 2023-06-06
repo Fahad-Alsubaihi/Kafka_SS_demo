@@ -89,14 +89,14 @@ position varchar(50) );
 Create pipeline:
 ```
 CREATE PIPELINE demo_pipeline
-As Load data KAFKA ‘IP:9092/demp_topic’
-Into table ‘demo_table’
+As Load data KAFKA 'IP:9092/demp_topic'
+Into table `demo_table`
 FORMAT AVRO
 SCHEMA REGISTRY 'IP:8081'
 (
-    ` demo_table `.` first_name ` <- ` first_name `,
-    ` demo_table `.` last_name ` <- ` last_name `,
-    ` demo_table `.` position ` <- ` position `
+    `demo_table`.`first_name`<-`first_name`,
+    `demo_table`.`last_name`<-` last_name`,
+    `demo_table`.`position`<-`position`
 );
 
 ```
