@@ -26,7 +26,7 @@ Schema:
     },
     {
       "doc": "The string is a unicode character sequence.",
-      "name": "role",
+      "name": "position",
       "type": "string"
     }
   ],
@@ -58,15 +58,18 @@ kafka-avro-console-producer --bootstrap-server IP:9092  --property schema.regist
 
 Messages:
 ```
-{"first_name":"Saleh", "last_name":"Alluhaidan", "role":"Developer"}
-{"first_name":"Fahad", "last_name":"Alsubaihi", "role":"Developer"}
-{"first_name":"Nawaf", "last_name":"Alrubayyi", "role":"Developer"}
-{"first_name":"Ali", "last_name":"Alshehri", "role":"Developer"}
-{"first_name":"Reem", "last_name":"Almedbil", "role":"Developer"}
-{"first_name":"Rafeef", "last_name":"Almutairi", "role":"Developer"}
-{"first_name":"Lamees", "last_name":"Abahussain", "role":"Developer"}
+{"first_name":"Saleh", "last_name":"Alluhaidan", "position":"Developer"}
+{"first_name":"Fahad", "last_name":"Alsubaihi", "position":"Developer"}
+{"first_name":"Nawaf", "last_name":"Alrubayyi", "position":"Developer"}
+{"first_name":"Ali", "last_name":"Alshehri", "position":"Developer"}
+{"first_name":"Reem", "last_name":"Almedbil", "position":"Developer"}
+{"first_name":"Rafeef", "last_name":"Almutairi", "position":"Developer"}
+{"first_name":"Lamees", "last_name":"Abahussain", "position":"Developer"}
 ```
-
+Consumer:
+```
+kafka-avro-console-consumer --bootstrap-server IP:9092 --property schema.registry.url=http://IP:8081 --topic demo_topic --from-beginning --timeout-ms 5000 --max-messages 1000
+```
 ## SS Commands:
 
 ```
@@ -80,7 +83,7 @@ Create table:
 Create table demo_table(
 first_name varchar(50) ,
 last_name varchar(50) ,
-role varchar(50) );
+position varchar(50) );
 
 ```
 Create pipeline:
@@ -93,7 +96,7 @@ SCHEMA REGISTRY 'IP:8081'
 (
     ` demo_table `.` first_name ` <- ` first_name `,
     ` demo_table `.` last_name ` <- ` last_name `,
-    ` demo_table `.` role ` <- ` role `
+    ` demo_table `.` position ` <- ` position `
 );
 
 ```
